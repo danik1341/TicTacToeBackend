@@ -22,52 +22,104 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+---
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+# Tic-Tac-Toe Game Backend
 
-## Installation
+## Project Overview
 
-```bash
-$ npm install
-```
+This repository hosts the backend service for a Tic-Tac-Toe game application, facilitating gameplay between human players and an AI bot. The backend is built with TypeScript and Nest.js, providing robust API endpoints for game interactions and player data management. MongoDB is used for data storage, with Mongoose.js for schema definitions and data interaction.
 
-## Running the app
+## Technologies
 
-```bash
-# development
-$ npm run start
+- **TypeScript:** Enhances code quality and understandability through static typing.
+- **Nest.js:** A progressive Node.js framework for building efficient and scalable server-side applications.
+- **MongoDB:** A NoSQL database for storing application data.
+- **Mongoose.js:** MongoDB object modeling for Node.js, simplifying interactions with the database.
+- **Docker (Optional):** For containerizing the application and ensuring consistent environments across development and production.
 
-# watch mode
-$ npm run start:dev
+## Getting Started
 
-# production mode
-$ npm run start:prod
-```
+Follow these steps to set up the project locally.
 
-## Test
+### Prerequisites
 
-```bash
-# unit tests
-$ npm run test
+- Node.js (LTS version)
+- npm
 
-# e2e tests
-$ npm run test:e2e
+  ```sh
+  npm install npm@latest -g
+  ```
 
-# test coverage
-$ npm run test:cov
-```
+- MongoDB (Local or Cloud instance)
 
-## Support
+### Installation
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+1. Clone the repository
 
-## Stay in touch
+   ```sh
+   git clone https://github.com/danik1341/TicTacToeBackend.git
+   ```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+2. Navigate to the project directory
 
-## License
+   ```sh
+   cd TicTacToeBackend
+   ```
 
-Nest is [MIT licensed](LICENSE).
+3. Install dependencies
+
+   ```sh
+   npm install
+   ```
+
+4. Set up environment variables by creating a `.env` file in the root directory with the following content (adjust values according to your setup):
+
+   ```
+   PORT=4000 (by defualt the port is set to 4000 if no port is given)
+   DATABASE_URL=mongodb://localhost:27017/tictactoe
+   ```
+
+5. Start the development server
+
+   ```sh
+   npm run start:dev
+   ```
+
+   The server will start, typically on `http://localhost:4000`.
+
+## API Endpoints
+
+### Gameplay API Endpoint
+
+- **POST** `/game/play` - Accepts user actions and returns the game status along with the AI's move.
+
+### Saved Game Retrieval API Endpoint
+
+- **POST** `/users/login` - Retrieves the user's data that includes current or last saved game for the authenticated user.
+
+## AI Bot Implementation
+
+The AI bot logic is implemented internally, with difficulty levels ranging from easy to hard. It does not rely on external AI services.
+
+## Dockerization (Optional)
+
+To containerize the backend service, ensure Docker is installed and running on your system. Then, follow these steps:
+
+1. Build the Docker image
+
+   ```sh
+   docker build -t TicTacToeBackend .
+   ```
+
+2. Run the container
+
+   ```sh
+   docker run -p 4000:4000 tic-tac-toe-backend
+   ```
+
+## Contributing
+
+I welcome contributions to improve the project. Please follow the standard fork-branch-PR workflow.
+
+---
